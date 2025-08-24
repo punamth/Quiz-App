@@ -11,7 +11,7 @@ export default function StartScreen() {
       </h1>
       <button
         onClick={() => dispatch(startQuiz())}
-        className="px-6 py-3 bg-orange-400 text-black font-bold rounded-lg shadow-md hover:bg-orange-500 transition-colors"
+        className="text-2xl px-6 py-3 bg-orange-400 text-black font-semibold rounded-lg shadow-md hover:bg-orange-500 transition-colors"
       >
         Start
       </button>
