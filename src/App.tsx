@@ -11,10 +11,10 @@ export default function App() {
   return (
     <div className="h-screen bg-white text-black dark:bg-gray-700 dark:text-white transition-colors flex flex-col overflow-hidden">
       {/* Header with dark mode toggle */}
-      <header className="p-4 flex justify-end flex-shrink-0">
+      <header className="p-2 flex justify-end flex-shrink-0">
         <button
           onClick={toggle}
-          className="px-3 py-2 rounded-lg bg-white dark:bg-gray-700 text-black dark:text-white transition-colors"
+          className="px-2 py-2 rounded-lg bg-white dark:bg-gray-700 text-black dark:text-white transition-colors"
         >
           {isDark ? "☀️" : "🌙"}
         </button>

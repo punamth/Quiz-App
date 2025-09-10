@@ -46,7 +46,7 @@ export default function QuestionCard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
+      <div className="min-h-screen bg-white dark:bg-gray-700 flex items-center justify-center">
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
           <p className="text-xl text-gray-600 dark:text-gray-300">Loading questions...</p>
         </div>
@@ -77,10 +77,10 @@ export default function QuestionCard() {
   const currentQ = questions[currentQuestionIndex];
 
   return (
-    <div className="h-full w-full p-4 overflow-y-auto">
+    <div className="h-full w-full p-1 overflow-y-auto">
       <div className="max-w-4xl mx-auto">
         {/* Header with Timer */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 mb-4">
           <div className="flex items-center justify-between">
             {/* Timer */}
             <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
