@@ -46,9 +46,9 @@ export default function QuestionCard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <p className="text-xl text-gray-600">Loading questions...</p>
+      <div className="min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+          <p className="text-xl text-gray-600 dark:text-gray-300">Loading questions...</p>
         </div>
       </div>
     );
@@ -56,9 +56,9 @@ export default function QuestionCard() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <p className="text-xl text-red-600">Error: {error}</p>
+      <div className="min-h-screen bg-white dark:bg-gray-700 flex items-center justify-center">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+          <p className="text-xl text-red-600 dark:text-red-400">Error: {error}</p>
         </div>
       </div>
     );
@@ -66,9 +66,9 @@ export default function QuestionCard() {
 
   if (!questions.length || !questions[currentQuestionIndex]) {
     return (
-      <div className="min-h-screen bg-white flex items-center justify-center">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <p className="text-xl text-gray-600">No questions available.</p>
+      <div className="min-h-screen bg-white dark:bg-gray-700 flex items-center justify-center">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+          <p className="text-xl text-gray-600 dark:text-gray-300">No questions available.</p>
         </div>
       </div>
     );
@@ -77,15 +77,15 @@ export default function QuestionCard() {
   const currentQ = questions[currentQuestionIndex];
 
   return (
-    <div className="min-h-screen bg-white p-4">
+    <div className="h-full w-full p-4 overflow-y-auto">
       <div className="max-w-4xl mx-auto">
         {/* Header with Timer */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-6">
           <div className="flex items-center justify-between">
             {/* Timer */}
-            <div className="flex items-center gap-2 text-gray-700">
-              <div className="w-6 h-6 rounded-full border-2 border-gray-400 flex items-center justify-center">
-                <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+            <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+              <div className="w-6 h-6 rounded-full border-2 border-gray-400 dark:border-gray-500 flex items-center justify-center">
+                <div className="w-2 h-2 bg-gray-400 dark:bg-gray-500 rounded-full"></div>
               </div>
               <span className="text-sm font-medium">Time remaining</span>
               <span className="text-xl font-mono font-bold">{formatTime(timeRemaining)}</span>
@@ -96,13 +96,13 @@ export default function QuestionCard() {
         <div className="flex gap-2">
           {/* Main Question Area */}
           <div className="flex-1">
-            <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
               {/* Question Header */}
               <div className="mb-8">
-                <h2 className="text-sm font-medium text-gray-500 mb-2">
+                <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
                   Question {currentQuestionIndex + 1} of {questions.length}
                 </h2>
-                <h1 className="text-xl font-semibold text-gray-800 leading-relaxed">
+                <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-200 leading-relaxed">
                   {currentQ.question}
                 </h1>
               </div>
@@ -121,19 +121,19 @@ export default function QuestionCard() {
                   if (selectedAnswer) {
                     if (isCorrect) {
                       // Always show green for the correct answer
-                      buttonClass += " bg-green-50 border-green-500 text-green-800";
-                      icon = <Check className="w-5 h-5 text-green-600" />;
+                      buttonClass += " bg-green-50 dark:bg-green-900/30 border-green-500 text-green-800 dark:text-green-300";
+                      icon = <Check className="w-5 h-5 text-green-600 dark:text-green-400" />;
                     } else if (isSelected && !isCorrect) {
                       // Show red for the selected wrong answer
-                      buttonClass += " bg-red-50 border-red-500 text-red-800";
-                      icon = <X className="w-5 h-5 text-red-600" />;
+                      buttonClass += " bg-red-50 dark:bg-red-900/30 border-red-500 text-red-800 dark:text-red-300";
+                      icon = <X className="w-5 h-5 text-red-600 dark:text-red-400" />;
                     } else {
                       buttonClass +=
-                        " bg-white border-gray-200 text-gray-700 opacity-70";
+                        " bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 opacity-70";
                     }
                   } else {
                     buttonClass +=
-                      " bg-white border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300";
+                      " bg-white dark:bg-gray-700 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-600 hover:border-gray-300 dark:hover:border-gray-500";
                   }
 
                   return (
@@ -146,7 +146,7 @@ export default function QuestionCard() {
                       <div className="flex items-center gap-3 w-full justify-between">
                         {/* Left side: option letter + text */}
                         <div className="flex items-center gap-3">
-                          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-sm font-medium">
+                          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-600 flex items-center justify-center text-sm font-medium">
                             {letters[index]}.
                           </span>
                           <span className="flex-1">{opt}</span>
@@ -164,7 +164,7 @@ export default function QuestionCard() {
                 <button
                   disabled={currentQuestionIndex === 0}
                   onClick={() => dispatch(goToPreviousQuestion())}
-                  className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   Prev
                 </button>
@@ -178,8 +178,8 @@ export default function QuestionCard() {
                         index === currentQuestionIndex
                           ? 'bg-orange-400 text-white'
                           : answeredQuestions.includes(index)
-                          ? 'bg-gray-200 text-gray-600 border border-gray-600'
-                          : 'bg-white text-gray-600 border border-gray-300 hover:bg-gray-50'
+                          ? 'bg-gray-200 dark:bg-gray-600 text-gray-600 dark:text-gray-300 border border-gray-600 dark:border-gray-500'
+                          : 'bg-white dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600'
                       }`}
                     >
                       {index + 1}
@@ -190,7 +190,7 @@ export default function QuestionCard() {
                 <button
                   disabled={!selectedAnswer}
                   onClick={() => dispatch(nextQuestion())}
-                  className="px-6 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   Next
                 </button>
@@ -200,8 +200,8 @@ export default function QuestionCard() {
 
           {/* Scoreboard */}
           <div className="w-64">
-            <div className="bg-white rounded-2xl shadow-lg p-6 sticky top-4">
-              <h3 className="text-lg font-semibold text-gray-800 mb-4">Score</h3>
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sticky top-4">
+              <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Score</h3>
               
               {/* Circular Progress */}
               <div className="relative w-32 h-32 mx-auto mb-6">
@@ -211,6 +211,7 @@ export default function QuestionCard() {
                     cy="50"
                     r="40"
                     stroke="#e5e7eb"
+                    className="dark:stroke-gray-600"
                     strokeWidth="8"
                     fill="none"
                   />
@@ -228,8 +229,8 @@ export default function QuestionCard() {
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-gray-800">{score}</div>
-                    <div className="text-sm text-gray-500">/{questions.length}</div>
+                    <div className="text-2xl font-bold text-gray-800 dark:text-gray-200">{score}</div>
+                    <div className="text-sm text-gray-500 dark:text-gray-400">/{questions.length}</div>
                   </div>
                 </div>
               </div>
@@ -237,12 +238,12 @@ export default function QuestionCard() {
               {/* Progress Stats */}
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Answered</span>
-                  <span className="font-medium">{answeredQuestions.length}/{questions.length}</span>
+                  <span className="text-gray-600 dark:text-gray-400">Answered</span>
+                  <span className="font-medium text-gray-800 dark:text-gray-200">{answeredQuestions.length}/{questions.length}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600">Score</span>
-                  <span className="font-medium text-orange-600">{score}</span>
+                  <span className="text-gray-600 dark:text-gray-400">Score</span>
+                  <span className="font-medium text-orange-600 dark:text-orange-400">{score}</span>
                 </div>
               </div>
             </div>

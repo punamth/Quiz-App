@@ -5,8 +5,8 @@ export default function StartScreen() {
   const dispatch = useAppDispatch();
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white">
-      <h1 className="text-4xl font-bold text-black mb-8">
+    <div className="flex flex-col items-center justify-center h-full w-full">
+      <h1 className="text-4xl font-bold text-black dark:text-white mb-8">
         Welcome to the Quiz!
       </h1>
       <button
