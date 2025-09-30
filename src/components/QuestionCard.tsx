@@ -77,8 +77,8 @@ export default function QuestionCard() {
   const currentQ = questions[currentQuestionIndex];
 
   return (
-    <div className="h-full w-full p-1 overflow-y-auto">
-      <div className="max-w-4xl mx-auto">
+    <div className="w-full">
+      <div className="max-w-5xl mx-auto w-full">
         {/* Header with Timer */}
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 mb-4">
           <div className="flex items-center justify-between">
@@ -93,10 +93,10 @@ export default function QuestionCard() {
           </div>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex flex-col-reverse lg:flex-row gap-3 lg:gap-4">
           {/* Main Question Area */}
-          <div className="flex-1">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+          <div className="flex-1 min-w-0">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
               {/* Question Header */}
               <div className="mb-8">
                 <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-2">
@@ -108,7 +108,7 @@ export default function QuestionCard() {
               </div>
 
               {/* Answer Options */}
-              <div className="grid grid-cols-1 gap-3 mb-8">
+              <div className="grid grid-cols-1 gap-2 sm:gap-3 mb-6 sm:mb-8">
                 {currentQ.options.map((opt, index) => {
                   const letters = ["A", "B", "C", "D"];
                   const isCorrect = opt === currentQ.answer;
@@ -146,10 +146,10 @@ export default function QuestionCard() {
                       <div className="flex items-center gap-3 w-full justify-between">
                         {/* Left side: option letter + text */}
                         <div className="flex items-center gap-3">
-                          <span className="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-600 flex items-center justify-center text-sm font-medium">
+                          <span className="flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gray-100 dark:bg-gray-600 flex items-center justify-center text-xs sm:text-sm font-medium">
                             {letters[index]}.
                           </span>
-                          <span className="flex-1">{opt}</span>
+                          <span className="flex-1 text-sm sm:text-base">{opt}</span>
                         </div>
                         {/* Right side: conditional icon */}
                         {icon}
@@ -160,21 +160,21 @@ export default function QuestionCard() {
                 </div>  
 
               {/* Navigation */}
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-2">
                 <button
                   disabled={currentQuestionIndex === 0}
                   onClick={() => dispatch(goToPreviousQuestion())}
-                  className="px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="px-4 sm:px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   Prev
                 </button>
 
-                <div className="flex gap-1">
+                <div className="flex gap-1 overflow-x-auto max-w-full py-1">
                   {questions.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => dispatch(goToQuestion(index))}
-                      className={`w-10 h-10 rounded-lg font-medium transition-colors ${
+                      className={`min-w-9 w-9 h-9 sm:w-10 sm:h-10 rounded-lg text-sm sm:text-base font-medium transition-colors ${
                         index === currentQuestionIndex
                           ? 'bg-orange-400 text-white'
                           : answeredQuestions.includes(index)
@@ -190,7 +190,7 @@ export default function QuestionCard() {
                 <button
                   disabled={!selectedAnswer}
                   onClick={() => dispatch(nextQuestion())}
-                  className="px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="px-4 sm:px-6 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   Next
                 </button>
@@ -199,13 +199,13 @@ export default function QuestionCard() {
           </div>
 
           {/* Scoreboard */}
-          <div className="w-64">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sticky top-4">
+          <div className="w-full lg:w-64">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-5 lg:p-6 lg:sticky lg:top-4">
               <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4">Score</h3>
               
               {/* Circular Progress */}
-              <div className="relative w-32 h-32 mx-auto mb-6">
-                <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-5 sm:mb-6">
+                <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                   <circle
                     cx="50"
                     cy="50"
@@ -229,8 +229,8 @@ export default function QuestionCard() {
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-gray-800 dark:text-gray-200">{score}</div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">/{questions.length}</div>
+                    <div className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-200">{score}</div>
+                    <div className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">/{questions.length}</div>
                   </div>
                 </div>
               </div>
